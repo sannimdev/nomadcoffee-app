@@ -19,7 +19,10 @@ export const logUserOut = async () => {
 };
 
 const httpLink = createHttpLink({
-    uri: 'http://eac1-220-78-126-60.ngrok.io/graphql',
+    uri:
+        process.env.NODE_ENV === 'production'
+            ? 'https://nomadcoffee-2022.herokuapp.com/'
+            : 'http://01cd-220-78-126-60.ngrok.io/graphql',
     credentials: 'include',
 });
 
@@ -32,9 +35,24 @@ const authLink = setContext((_, { headers }) => {
     };
 });
 
+export const cache = new InMemoryCache({
+    typePolicies: {
+        Query: {
+            fields: {
+                seeCoffeeShops: {
+                    keyArgs: false,
+                    merge(existing = [], incoming = []) {
+                        return [...existing, ...incoming];
+                    },
+                },
+            },
+        },
+    },
+});
+
 const client = new ApolloClient({
     link: authLink.concat(httpLink),
-    cache: new InMemoryCache(),
+    cache,
 });
 
 export default client;
