@@ -22,7 +22,7 @@ const httpLink = createHttpLink({
     uri:
         process.env.NODE_ENV === 'production'
             ? 'https://nomadcoffee-2022.herokuapp.com/'
-            : 'http://01cd-220-78-126-60.ngrok.io/graphql',
+            : 'http://34d7-220-78-126-60.ngrok.io/graphql',
     credentials: 'include',
 });
 
