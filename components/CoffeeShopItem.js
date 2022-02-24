@@ -58,9 +58,9 @@ const Category = styled.Text`
     margin-right: 10px;
 `;
 
-const defaultCafeImage =
+export const defaultCafeImage =
     'https://images.unsplash.com/photo-1532490389938-2856e3f1560a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80';
-const defaultAvatar =
+export const defaultAvatar =
     'https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2062&q=80';
 
 function CoffeeShopItem({ photo, categories, user, name }) {

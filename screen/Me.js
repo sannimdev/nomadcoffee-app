@@ -66,7 +66,10 @@ export default function CreateAccount({ navigation }) {
         <AuthLayout>
             {myProfile?.avatarURL && (
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', marginBottom: 20 }}>
-                    <Image style={{ width: 150, height: 150, borderRadius: '50%' }} source={myProfile.avatarURL} />
+                    <Image
+                        style={{ width: 150, height: 150, borderRadius: 75 }}
+                        source={{ uri: myProfile.avatarURL }}
+                    />
                 </View>
             )}
             <TextInput
