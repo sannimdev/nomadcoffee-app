@@ -1,18 +1,16 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { isLoggedInVar } from '../apollo';
 import Home from '../screen/Home';
 import Search from '../screen/Search';
 import Me from '../screen/Me';
 import LogIn from '../screen/LogIn';
 import TabHeaderTitle from '../components/nav/TabHeaderTitle.js';
 import CreateAccount from '../screen/CreateAccount';
-import { useReactiveVar } from '@apollo/client';
+import AddCoffeeShop from '../screen/AddCoffeeShop';
 
 const Stack = createStackNavigator();
 
-export default function SharedStackNav({ screenName }) {
-    const isLoggedIn = useReactiveVar(isLoggedInVar);
+export default function SharedStackNav({ screenName, isLoggedIn = false }) {
     return (
         <Stack.Navigator
             screenOptions={{
@@ -34,6 +32,15 @@ export default function SharedStackNav({ screenName }) {
                     }}
                 />
             )}
+            {screenName === 'AddCoffeeShop' && isLoggedIn ? (
+                <Stack.Screen
+                    name="AddCoffeeShop"
+                    component={AddCoffeeShop}
+                    options={{
+                        headerTitle: () => <TabHeaderTitle title="AddCoffeeShop" />,
+                    }}
+                />
+            ) : null}
             {screenName === 'Search' && (
                 <Stack.Screen
                     name="Search"
