@@ -67,9 +67,9 @@ export default function Search({ navigation }) {
         register('keyword', { required: true, minLength: 2 });
     }, []);
 
-    useEffect(() => {
-        if (data) console.log(data, '데이터');
-    }, [data]);
+    // useEffect(() => {
+    //     if (data) console.log(data, '데이터');
+    // }, [data]);
 
     const renderItem = ({ item: coffeeShop }) => (
         <TouchableOpacity>

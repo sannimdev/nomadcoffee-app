@@ -1,4 +1,4 @@
-import { gql, useMutation, useQuery } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 import React, { useRef, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
@@ -22,17 +22,9 @@ const ME_QUERY = gql`
 
 export default function CreateAccount({ navigation }) {
     const [myProfile, setMyProfile] = useState({});
-    const fields = ['name', 'email', 'username', 'githubUsername', 'avatarURL'];
+    // const fields = ['name', 'email', 'username', 'githubUsername', 'avatarURL'];
     const { register, handleSubmit, setValue, getValues, watch } = useForm();
-    const onCompleted = (data) => {
-        const {
-            createUser: { ok },
-        } = data;
-        if (ok) {
-            const { username, password } = getValues();
-            navigation.navigate('LogIn', { username, password });
-        }
-    };
+
     const onLoadCompleted = (data) => {
         const { me } = data;
         if (me) {

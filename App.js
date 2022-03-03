@@ -8,7 +8,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import client, { isLoggedInVar, KEY_TOKEN, tokenVar, cache } from './apollo';
 import { ApolloProvider } from '@apollo/client';
-import { AsyncStorageWrapper } from 'apollo3-cache-persist';
+import { AsyncStorageWrapper, persistCache } from 'apollo3-cache-persist';
 
 export default function App() {
     const [loading, setLoading] = useState(true);
@@ -23,8 +23,8 @@ export default function App() {
     const preload = async () => {
         const token = await AsyncStorage.getItem(KEY_TOKEN);
         if (token) {
-            isLoggedInVar(true);
             tokenVar(token);
+            isLoggedInVar(true);
         }
         await persistCache({
             cache,

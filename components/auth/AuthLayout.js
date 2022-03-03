@@ -17,7 +17,7 @@ const Logo = styled.Image`
     margin-bottom: 20px;
 `;
 
-export default function AuthLayout({ children }) {
+export default function AuthLayout({ children, title = 'Nomad Coffee' }) {
     const dismissKeyboard = () => {
         Keyboard.dismiss();
     };
@@ -31,7 +31,7 @@ export default function AuthLayout({ children }) {
                 >
                     <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
                         <Logo resizeMode="contain" source={require('../../assets/logo.png')} />
-                        <Text style={{ marginLeft: 10, color: 'white' }}>Nomad Coffee</Text>
+                        <Text style={{ marginLeft: 10, color: 'white' }}>{title}</Text>
                     </View>
                     {children}
                 </KeyboardAvoidingView>
